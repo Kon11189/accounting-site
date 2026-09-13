@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-h: 76px;
+    --max-w: 1200px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ivory text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "cv01", "cv11";
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: rgba(20, 53, 43, 0.12);
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-ink;
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    @apply text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid #14352b;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Hide horizontal overflow universally */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply px-5 sm:px-6 lg:px-8;
+  }
+
+  .shell {
+    @apply mx-auto w-full max-w-[1200px] container-px;
+  }
+
+  .eyebrow {
+    @apply text-2xs font-semibold uppercase tracking-[0.18em] text-muted;
+  }
+
+  .lead {
+    @apply text-base sm:text-lg text-graphite leading-relaxed;
+  }
+
+  .card {
+    @apply rounded-2xl bg-surface border border-line shadow-soft;
+  }
+
+  .hairline {
+    @apply border-line;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/70 px-3 py-1 text-2xs font-medium text-graphite;
+  }
+
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 ease-smooth disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink placeholder:text-muted/70 transition-colors focus:border-forest focus:outline-none focus:ring-2 focus:ring-forest/15;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(18px);
+    -webkit-backdrop-filter: saturate(180%) blur(18px);
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
